@@ -55,16 +55,10 @@ class App extends Component{
   }
 
   render() {
-    const myStyle ={
-      // backgroundColor: 'green',
-      // ':hover': {
-      //   backgroundColor: 'blue',
-      //   color: 'yellow'
-      fontSize: '16px'
-      // }
-    }
-
+   
     let persons = null;
+    let btnClass = '';
+
     if (this.state.showPersons) {
       persons = (
         
@@ -80,11 +74,7 @@ class App extends Component{
           })}
         </div> 
       );
-    // myStyle.backgroundColor  = 'black';
-    // myStyle[':hover'] ={
-    //   backgroundColor: 'pink',
-    //   color: 'blue'
-    // }
+    btnClass = classes.Red;
 
     }
 
@@ -102,10 +92,10 @@ class App extends Component{
         <div className={classes.App}>
           <h1 className={classNames.join(' ')}>Person's names</h1>
           <button
-            className={classes.Button}
+            className={btnClass}
             alt={this.state.showPersons}
             onClick={this.togglePersonsHandler}
-            style={myStyle}
+            // style={myStyle}
             >Toggle Name</button>
           {persons}
         </div>
