@@ -11,7 +11,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.button {
+.Button {
 
   background-color: blue;
   font: inherit;
@@ -23,7 +23,7 @@
   color: #fff;
 }
 
-.button:hover {
+.Button:hover {
   background-color: lightblue;
   color: black
 }

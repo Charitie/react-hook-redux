@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 // import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
@@ -91,18 +91,18 @@ class App extends Component{
     // let classNames = ['blue', 'bold'].join(' ');
     let classNames = [];
     if (this.state.persons.length <= 2){
-      classNames.push('blue');
+      classNames.push(classes.blue);
     }
     if (this.state.persons.length <= 1){
-      classNames.push('bold');
+      classNames.push(classes.bold);
     }
 
     return (
       // <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1 className={classNames.join(' ')}>Person's names</h1>
           <button
-            className='button'
+            className={classes.Button}
             alt={this.state.showPersons}
             onClick={this.togglePersonsHandler}
             style={myStyle}
