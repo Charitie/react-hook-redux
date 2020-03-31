@@ -10,3 +10,20 @@
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.button {
+
+  background-color: blue;
+  font: inherit;
+  border: 1px solid darkblue;
+  padding: 8px;
+  cursor: pointer;
+  margin: 8px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: lightblue;
+  color: black
+}

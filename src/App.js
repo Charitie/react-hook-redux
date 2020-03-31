@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
 
-const StyleButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'blue'};
-  font: inherit;
-  border: 1px solid darkblue;
-  padding: 8px;
-  cursor: pointer;
-  margin: 8px;
-  border-radius: 8px;
-  color: #fff;
-    &:hover {
-      background-color: ${props => props.alt ? 'pink' : 'green'};
-      color: ${props => props.alt ? 'black' : 'yellow'};
-    }
-`
+
 class App extends Component{
   state = {
     persons: [
@@ -114,11 +101,12 @@ class App extends Component{
       // <StyleRoot>
         <div className="App">
           <h1 className={classNames.join(' ')}>Person's names</h1>
-          <StyleButton
+          <button
+            className='button'
             alt={this.state.showPersons}
             onClick={this.togglePersonsHandler}
             style={myStyle}
-            >Toggle Name</StyleButton>
+            >Toggle Name</button>
           {persons}
         </div>
       // </StyleRoot>
