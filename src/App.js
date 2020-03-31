@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import styled from 'styled-components';
+// import Radium, { StyleRoot } from 'radium';
 
+const StyleButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'blue'};
+  font: inherit;
+  border: 1px solid darkblue;
+  padding: 8px;
+  cursor: pointer;
+  margin: 8px;
+  border-radius: 8px;
+  color: #fff;
+    &:hover {
+      background-color: ${props => props.alt ? 'pink' : 'green'};
+      color: ${props => props.alt ? 'black' : 'yellow'};
+    }
+`
 class App extends Component{
   state = {
     persons: [
@@ -27,7 +43,6 @@ class App extends Component{
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     })
-
     const person = {
       ...this.state.persons[personIndex]
     }
@@ -53,6 +68,15 @@ class App extends Component{
   }
 
   render() {
+    const myStyle ={
+      // backgroundColor: 'green',
+      // ':hover': {
+      //   backgroundColor: 'blue',
+      //   color: 'yellow'
+      fontSize: '16px'
+      // }
+    }
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -68,14 +92,36 @@ class App extends Component{
             />
           })}
         </div> 
-      )
+      );
+    // myStyle.backgroundColor  = 'black';
+    // myStyle[':hover'] ={
+    //   backgroundColor: 'pink',
+    //   color: 'blue'
+    // }
+
     }
+
+    // let classNames = ['blue', 'bold'].join(' ');
+    let classNames = [];
+    if (this.state.persons.length <= 2){
+      classNames.push('blue');
+    }
+    if (this.state.persons.length <= 1){
+      classNames.push('bold');
+    }
+
     return (
-      <div className="App">
-        <h1>Person's names</h1>
-        <button onClick={this.togglePersonsHandler}>Toggle Name</button>
-        {persons}
-      </div>
+      // <StyleRoot>
+        <div className="App">
+          <h1 className={classNames.join(' ')}>Person's names</h1>
+          <StyleButton
+            alt={this.state.showPersons}
+            onClick={this.togglePersonsHandler}
+            style={myStyle}
+            >Toggle Name</StyleButton>
+          {persons}
+        </div>
+      // </StyleRoot>
     );
   }
 } 

@@ -1,13 +1,13 @@
-.person {
+/* .person {
   width: 60%;;
   margin: auto;
   border: 1px solid lightblue;
   box-shadow: 2px 2px 3px 1px #000;
   padding: 16px;
   text-align: center;
-}
+} */
 
-button {
+/* button {
   background-color: blue;
   font: inherit;
   border: 1px solid darkblue;
@@ -16,4 +16,10 @@ button {
   margin: 8px;
   border-radius: 8px;
   color: #fff;
-}
+} */
+
+/* const personStyle = {
+  '@media (min-width: 600px)': {
+    width: '450px',
+    backgroundColor: 'red'
+  } */
