@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
-import Person from './Person/Person';
+import Persons from './Components/Person/Persons';
 // import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
 
@@ -63,22 +63,17 @@ class App extends Component{
       persons = (
         
         <div>
-          {this.state.persons.map((person, index) => {
-          return <Person 
-            click={() => this.deletePersonHandler(index)}
-            name={person.name} 
-            age={person.age}
-            key={person.id}
-            changed={(event) => this.nameChangeHandler(event, person.id)}
-            />
-          })}
+          <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangeHandler} 
+          />
         </div> 
       );
     btnClass = classes.Red;
 
     }
 
-    // let classNames = ['blue', 'bold'].join(' ');
     let classNames = [];
     if (this.state.persons.length <= 2){
       classNames.push(classes.blue);
@@ -88,18 +83,10 @@ class App extends Component{
     }
 
     return (
-      // <StyleRoot>
         <div className={classes.App}>
-          <h1 className={classNames.join(' ')}>Person's names</h1>
-          <button
-            className={btnClass}
-            alt={this.state.showPersons}
-            onClick={this.togglePersonsHandler}
-            // style={myStyle}
-            >Toggle Name</button>
+          
           {persons}
         </div>
-      // </StyleRoot>
     );
   }
 } 
