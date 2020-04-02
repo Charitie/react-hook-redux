@@ -1,6 +1,8 @@
 import React from 'react';
 import personStyle from './Person.module.css';
 import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
+import classes from './Person.module.css';
 
 const Person = (props) => {
  
@@ -15,4 +17,4 @@ x    </Aux>
   );
 }
 
-export default Person;
+export default withClass(Person, classes.person);

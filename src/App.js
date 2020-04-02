@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 import Persons from './Components/Person/Persons';
 import Cockpit from './Components/Cockpit/Cockpit';
-// import styled from 'styled-components';
-// import Radium, { StyleRoot } from 'radium';
+import withClass from './hoc/withClass';
+import Aux from './hoc/Aux';
 
 
 class App extends Component{
@@ -83,23 +83,23 @@ class App extends Component{
  
 
     return (
-        <div className={classes.App}>
+        <Aux classes={classes.App}>
           <button
             onClick={() => {
               this.setState({ showCockpit: false });
-            }}
-        >
-          Remove Cockpit
-        </button>
-          { this.state.showCockpit ? <Cockpit 
-            title={this.props.appTitle}
-            showPersons = {this.state.showPersons}
-            personsLength = {this.state.persons.length}
-            clicked = {this.togglePersonsHandler}
-          /> : null}
-          {persons}
-        </div>
+              }}
+          >
+            Remove Cockpit
+          </button>
+            { this.state.showCockpit ? <Cockpit 
+              title={this.props.appTitle}
+              showPersons = {this.state.showPersons}
+              personsLength = {this.state.persons.length}
+              clicked = {this.togglePersonsHandler}
+            /> : null}
+            {persons}
+        </Aux>
     );
   }
 } 
-export default App;
+export default withClass(App, classes.App);
