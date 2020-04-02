@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.module.css';
 import Persons from './Components/Person/Persons';
+import Cockpit from './Components/Cockpit/Cockpit';
 // import styled from 'styled-components';
 // import Radium, { StyleRoot } from 'radium';
 
@@ -57,34 +58,23 @@ class App extends Component{
   render() {
    
     let persons = null;
-    let btnClass = '';
 
     if (this.state.showPersons) {
-      persons = (
-        
-        <div>
-          <Persons 
+      persons = <Persons 
             persons={this.state.persons}
             clicked={this.deletePersonHandler}
             changed={this.nameChangeHandler} 
-          />
-        </div> 
-      );
-    btnClass = classes.Red;
+          />; }
 
-    }
-
-    let classNames = [];
-    if (this.state.persons.length <= 2){
-      classNames.push(classes.blue);
-    }
-    if (this.state.persons.length <= 1){
-      classNames.push(classes.bold);
-    }
+ 
 
     return (
         <div className={classes.App}>
-          
+          <Cockpit 
+            showPersons = {this.state.showPersons}
+            persons = {this.state.persons}
+            clicked = {this.togglePersonsHandler}
+          />
           {persons}
         </div>
     );
