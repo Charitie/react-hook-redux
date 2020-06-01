@@ -96,9 +96,10 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ings,
       price:this.props.price,
-      orderData: formData
+      orderData: formData,
+      userId: this.props.userId
     }
-    this.props.onOrderBurger(order);
+    this.props.onOrderBurger(order, this.props.token);
   }
 
   checkValidity(value, rules) {
@@ -141,7 +142,6 @@ class ContactData extends Component {
     updatedFormElement.value = event.target.value;
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
-    console.log(updatedFormElement)
     updateOrderForm[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
@@ -193,13 +193,15 @@ const mapStateToProps = state => {
   return {
     price: state.burgerBuilder.totalPrice,
     ings: state.burgerBuilder.ingredients,
-    loading: state.order.loading
+    loading: state.order.loading,
+    token: state.auth.token,
+    userId: state.auth.userId
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return{
-    onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+    onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
 
   }
 }
