@@ -150,7 +150,7 @@ class ContactData extends Component {
         </form>
     );
     if (this.props.loading) {
-      // form = <Spinner />;
+      form = <Spinner />;
     }
     return (
       <div className={classes.ContactData}>
