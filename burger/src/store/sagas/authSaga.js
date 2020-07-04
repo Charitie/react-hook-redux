@@ -1,7 +1,6 @@
 import { put, delay } from 'redux-saga/effects';
 import axios from 'axios';
 
-// import * as actionTypes  from '../actions/actionTypes';
 import * as actions from '../actions';
 
 export function* logoutSaga(action) {
