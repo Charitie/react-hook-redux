@@ -33,42 +33,23 @@ export const logout = () => {
 
 export const logoutSucceed = () => {
   return {
-    type: actionTypes.AUTH_INITIATE_LOGOUT
+    type: actionTypes.AUTH_LOGOUT
   }
 }
 
 export const checkAuthTimeout = (expirationTime) => {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, expirationTime * 1000)
+  return  {
+    type: actionTypes.AUTH_CHECK_TIMEOUT,
+    expirationTime: expirationTime
   }
 }
 
 export const auth = (email, password, isSignup) => {
-  return dispatch => {
-      dispatch(authStart());
-      const authData = {
-        email: email,
-        password: password,
-        returnSecureToken: true
-      }
-      let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDkqS99QEo-wQrLaZUNXYpXq9wYF3GjnuI';
-      if(!isSignup) {
-        url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDkqS99QEo-wQrLaZUNXYpXq9wYF3GjnuI'
-      }
-      axios.post(url, authData)
-        .then(res => {
-          const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000)
-          localStorage.setItem('token', res.data.idToken);
-          localStorage.setItem('expirationDate', expirationDate)
-          localStorage.setItem('userId', res.data.localId);
-          dispatch(authSuccess(res.data.idToken, res.data.localId))
-          dispatch(checkAuthTimeout(res.data.expiresIn))
-        })
-        .catch(err => {
-          dispatch(authFail(err.response.data.error))
-        })
+  return {
+     type: actionTypes.AUTH_USER,
+     email: email,
+     password: password,
+     isSignup: isSignup
   };
 };
 
