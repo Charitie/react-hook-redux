@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Orders = (props) => {
-  const { onFetchOrders, token, userId } = props;
+	const { onFetchOrders, token, userId } = props;
 	useEffect(() => {
 		onFetchOrders(token, userId);
 	}, [onFetchOrders, token, userId]);
